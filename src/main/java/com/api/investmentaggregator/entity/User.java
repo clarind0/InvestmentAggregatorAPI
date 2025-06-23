@@ -31,4 +31,7 @@ public class User {
 
     @UpdateTimestamp
     private Instant updateTimestamp;
+
+    public User(UUID uuid, String username, String email, String password, Instant creationTimestamp, Instant updateTimestamp) {
+    }
 }
