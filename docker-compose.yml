@@ -8,5 +8,5 @@ services:
       - 'MYSQL_USER=springuser'
     ports:
       - "3306:3306"
-    volumes:
-      - "./conf.d:/etc/mysql/conf.d:ro"
+#    volumes:
+#      - "./conf.d:/etc/mysql/conf.d:ro"
