@@ -2,11 +2,13 @@ package com.api.investmentaggregator.controller;
 
 import com.api.investmentaggregator.Service.UserService;
 import com.api.investmentaggregator.entity.User;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/users")
@@ -32,5 +34,18 @@ public class UserController {
         } else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> ListUsers(){
+        var users = userService.listUsers();
+
+        return ResponseEntity.ok(users);
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteById(@PathVariable("userId") String userId) {
+        userService.deleteById(userId);
+        return ResponseEntity.noContent().build();
     }
 }

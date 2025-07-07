@@ -4,9 +4,11 @@ import com.api.investmentaggregator.controller.CreateUserDto;
 import com.api.investmentaggregator.entity.User;
 import com.api.investmentaggregator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -36,6 +38,21 @@ public class UserService {
     }
 
     public Optional<User> getUserById(String userId){
+
         return userRepository.findById(UUID.fromString(userId));
+    }
+
+    public List<User> listUsers(){
+        return userRepository.findAll();
+    }
+
+    public void deleteById(String userId) {
+        var id = UUID.fromString(userId);
+
+        var userExists = userRepository.existsById(id);
+
+        if(userExists) {
+            userRepository.deleteById(id);
+        }
     }
 }
