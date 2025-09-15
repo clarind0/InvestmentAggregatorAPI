@@ -1,10 +1,8 @@
-package com.api.investmentaggregator.Service;
+package com.api.investmentaggregator.service;
 
 import com.api.investmentaggregator.controller.CreateUserDto;
 import com.api.investmentaggregator.entity.User;
 import com.api.investmentaggregator.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
